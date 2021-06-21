@@ -46,7 +46,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -77,6 +77,15 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To enable venv prompt
+plugins=(virtualenv)
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
 # User configuration
 
@@ -107,55 +116,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Aliases
-alias python_dir="~/Programmering/Python"
-alias NTNU="~/Documents/NTNU/"
-alias V2021="~/Documents/NTNU/V2021/"
 alias Downloads="~/Downloads/"
-alias web="~/Documents/NTNU/H2019/Webutvikling/"
 alias ze="vim ~/.zshrc"
 alias za="source ~/.zshrc"
 alias ve="vim ~/.vimrc"
-alias startmongo="sudo mongod --dbpath=/System/Volumes/Data/data/db"
-alias editmongo="vim /usr/local/etc/mongod.conf"
-alias ssh_web="ssh victojo@it2810-39.idi.ntnu.no"
-alias mongoadmin="mongo -u admin -p admin it2810-39.idi.ntnu.no:27017/admin"
 alias mysql='/usr/local/mysql/bin/mysql -uroot -p'¬
-alias cheat='cat ~/cheatsheet.txt | fzf'
-alias rh='~/Programmering/realfagsportalen/'
-alias check_crypto="curl https://min-api.cryptocompare.com/data/price\?fsym\=ETC\&tsyms\=NOK,USD,EUR\&api_key\=7e07182d175c824535dcb2339dfbdad14b4c8b3018226b4338df22a74c4256da"
 alias dev="cd ~/dev"
-alias jnb=" jupyter notebook"¬
-alias questscreen="scrcpy -c 1200:800:180:320 -m 1600 -b 25M"
-alias wiseline="cd ~/dev/wiselinestud-django/ && . venv/bin/activate"
 alias ss=". venv/bin/activate"
 
 
 export LC_ALL=no_NO.UTF-8
-#export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PYTHONPATH="/usr/local/bin/python"
 export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 export PATH=${PATH}:/Users/Victor/Library/Python/3.8/bin
-#export DJANGO_SETTINGS_MODULE="wai3.settings"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# To enable venv prompt
-plugins=(virtualenv)
-
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
-
-
 
 # For compilers to find zlib you may need to set:
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
@@ -167,14 +142,5 @@ export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="$PATH:/Users/Victor/spark-3.0.1-bin-hadoop3.2/bin"
-export SPARK_HOME="/Users/Victor/spark-3.0.1-bin-hadoop3.2"
-export PATH=$SPARK_HOME/bin:$PATH
-export PYSPARK_PYTHON=python3
-
-# ENV variables to run Cordova
-export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export ANDROID_AVD_HOME=~/.android/av
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

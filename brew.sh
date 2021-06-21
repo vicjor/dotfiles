@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-brew upgrade
-
 # Install Brew Packages
+brew install node
+brew install git
 brew install python
 brew install tree
+brew install fzf
+brew install htop
+brew install tldr
+brew install ranger
+
 
 # Install MacOS Applications
 brew install --cask google-chrome
