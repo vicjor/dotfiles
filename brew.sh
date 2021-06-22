@@ -9,14 +9,13 @@ brew install fzf
 brew install htop
 brew install tldr
 brew install ranger
-
+brew install vim
+brew install wget
 
 # Install MacOS Applications
 brew install --cask google-chrome
 brew install --cask spotify
 brew install --cask visual-studio-code
-brew install --cask vim
-brew install --cask wget
 brew install --cask iterm2
 brew install --cask messenger
 brew install --cask spectacle

@@ -13,6 +13,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Disable the sound effects on boot"
 sudo nvram SystemAudioVolume=" "
 
+echo "Disable OSX window animations"
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
+
 echo "Finder: show all filename extensions"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
