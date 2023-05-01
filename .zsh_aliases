@@ -7,4 +7,4 @@ alias dev="cd ~/dev"
 alias vim="nvim"
 
 # Make sure this file is imported in .zshrc by adding the line below
-# source ~/.zsh_aliases
+# source .zsh_aliases
