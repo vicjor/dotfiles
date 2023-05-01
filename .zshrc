@@ -119,12 +119,14 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
 # Aliases
 alias Downloads="~/Downloads/"
-alias ze="vim ~/.zshrc"
+alias ze="nvim ~/.zshrc"
 alias za="source ~/.zshrc"
 alias ve="vim ~/.vimrc"
 alias dev="cd ~/dev"
 
 # Functions
+#
+# Add all args to .gitignore
 gi() {
   for arg in "$@"
   do
