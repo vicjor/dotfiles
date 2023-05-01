@@ -73,7 +73,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git zsh-autosuggestions zsh-syntax-highlighting web-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,9 +122,15 @@ alias Downloads="~/Downloads/"
 alias ze="vim ~/.zshrc"
 alias za="source ~/.zshrc"
 alias ve="vim ~/.vimrc"
-alias mysql='/usr/local/mysql/bin/mysql -uroot -p'¬
 alias dev="cd ~/dev"
-alias ss=". venv/bin/activate"
+
+# Functions
+gi() {
+  for arg in "$@"
+  do
+    echo "$arg" >> .gitignore
+  done
+}
 
 
 export LC_ALL=no_NO.UTF-8
@@ -144,3 +150,17 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+# Hoembrew (New path for ARM)
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
+
+# Added by Amplify CLI binary installer
+export PATH="$HOME/.amplify/bin:$PATH"
+
+# Neofetch on launch
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# NOTE: Must be at the end of .zshrc
+source /Users/Victor/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
