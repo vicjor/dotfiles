@@ -117,22 +117,11 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# Aliases
-alias Downloads="~/Downloads/"
-alias ze="nvim ~/.zshrc"
-alias za="source ~/.zshrc"
-alias ve="vim ~/.vimrc"
-alias dev="cd ~/dev"
+# Import Aliases
+source .zsh_aliases
 
-# Functions
-#
-# Add all args to .gitignore
-gi() {
-  for arg in "$@"
-  do
-    echo "$arg" >> .gitignore
-  done
-}
+# Import Functions
+source .zsh_functions
 
 
 export LC_ALL=no_NO.UTF-8

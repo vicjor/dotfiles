@@ -1,0 +1,11 @@
+# zsh/bash functions
+
+# Add all args to .gitignore file in your current folder
+gi() {
+  for arg in "$@"
+  do
+    echo "$arg" >> .gitignore
+  done
+}
+
+# Remember to import this file in .zshrc 
