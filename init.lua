@@ -6,6 +6,7 @@
 
 Kickstart.nvim is *not* a distribution.
 
+
 Kickstart.nvim is a template for your own configuration.
   The goal is that you can read every line of code, top-to-bottom, and understand
   what your configuration is doing.
@@ -35,6 +36,12 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
+
+-- Custom personal setup:
+require('victor.core.options')
+require('victor.core.keymaps')
+require('victor.plugins-setup')
+require('victor.core.colorscheme')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -237,6 +244,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('i', '<D-S>', ':wq')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -493,3 +501,8 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Custom keymappings
+vim.api.nvim_set_keymap('n', '<D-s>', ':w<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<D-s>', '<C-o>:w<CR>', {noremap = true, silent = true})
+
