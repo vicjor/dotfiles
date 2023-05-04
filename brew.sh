@@ -23,5 +23,6 @@ brew install --cask 1password
 brew install --cask miro
 brew install --cask postman
 brew install --cask notion
-brew install --cask gitkraken
 brew install --cask slack
+brew install --cask raycast
+brew install --cask todoist

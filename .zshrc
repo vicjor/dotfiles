@@ -46,7 +46,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -73,7 +73,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git zsh-autosuggestions zsh-syntax-highlighting web-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,14 +117,11 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# Aliases
-alias Downloads="~/Downloads/"
-alias ze="vim ~/.zshrc"
-alias za="source ~/.zshrc"
-alias ve="vim ~/.vimrc"
-alias mysql='/usr/local/mysql/bin/mysql -uroot -p'¬
-alias dev="cd ~/dev"
-alias ss=". venv/bin/activate"
+# Import Aliases
+source .zsh_aliases
+
+# Import Functions
+source .zsh_functions
 
 
 export LC_ALL=no_NO.UTF-8
@@ -144,3 +141,17 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+# Hoembrew (New path for ARM)
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
+
+# Added by Amplify CLI binary installer
+export PATH="$HOME/.amplify/bin:$PATH"
+
+# Neofetch on launch
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# NOTE: Must be at the end of .zshrc
+source /Users/Victor/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
