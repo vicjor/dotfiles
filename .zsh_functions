@@ -8,4 +8,16 @@ gi() {
   done
 }
 
+# Git file selector 
+git-file-selector() 
+git-file-selector() {
+    local file=$(git status --short | fzf --preview "bat --style=changes --always-color {1}" | awk '{print $2}')
+    if [[ -n "$file" ]]; then
+        LBUFFER+="$(echo $file)"
+    fi
+}
+zle -N git-file-selector
+bindkey '^G' git-file-selector
+
+
 # Remember to import this file in .zshrc 
