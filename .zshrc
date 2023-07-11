@@ -10,7 +10,7 @@ fi
 
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/Victor/.oh-my-zsh"
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -73,14 +73,32 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git zsh-autosuggestions zsh-syntax-highlighting web-search
+  git zsh-autosuggestions web-search
 )
 
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
+
+# Load Zsh completion system
+autoload -Uz compinit
+compinit
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# File selector 
+file-selector() 
+file-selector() {
+    local file=$(git status --short | fzf --preview "bat --style=changes --always-color {1}" | awk '{print $2}')
+    if [[ -n "$file" ]]; then
+        LBUFFER+="$(echo $file)"
+    fi
+}
+zle -N file-selector
+bindkey '^G' file-selector
+
 
 # To enable venv prompt
 plugins=(virtualenv)
@@ -118,16 +136,16 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
 
 # Import Aliases
-source .zsh_aliases
+source ~/.zsh_aliases
 
 # Import Functions
-source .zsh_functions
+source ~/.zsh_functions
 
 
 export LC_ALL=no_NO.UTF-8
 export PYTHONPATH="/usr/local/bin/python"
 export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
-export PATH=${PATH}:/Users/Victor/Library/Python/3.8/bin
+export PATH=${PATH}:~/Library/Python/3.8/bin
 
 # For compilers to find zlib you may need to set:
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
@@ -154,4 +172,6 @@ export PATH="$HOME/.amplify/bin:$PATH"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # NOTE: Must be at the end of .zshrc
-source /Users/Victor/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
