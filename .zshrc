@@ -88,6 +88,18 @@ compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# File selector 
+file-selector() 
+file-selector() {
+    local file=$(git status --short | fzf --preview "bat --style=changes --always-color {1}" | awk '{print $2}')
+    if [[ -n "$file" ]]; then
+        LBUFFER+="$(echo $file)"
+    fi
+}
+zle -N file-selector
+bindkey '^G' file-selector
+
+
 # To enable venv prompt
 plugins=(virtualenv)
 
@@ -161,3 +173,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # NOTE: Must be at the end of .zshrc
 source ~/.config/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
