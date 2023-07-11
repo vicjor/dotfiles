@@ -13,6 +13,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Disable the sound effects on boot"
 sudo nvram SystemAudioVolume=" "
 
+echo "Show path in title in Finder"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true; killall Finder
+
+echo "Disable OSX window animations"
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
+
 echo "Finder: show all filename extensions"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 

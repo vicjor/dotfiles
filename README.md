@@ -10,7 +10,9 @@ This dotfiles setup includes configurations for:
 - Zsh
 - NeoVim
 - Homebrew
--OS X system settings
+- OS X system settings
+- iTerm themes
+- Keyboard dev layout
 
 ## Setup
 
